@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"bitbucket.org/mylittleadventure/example/scraper"
+	"bitbucket.org/mylittleadventure/example-golang/scraper"
 )
 
 func Serve(h []scraper.Hotel) {
