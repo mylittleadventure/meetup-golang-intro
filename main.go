@@ -6,8 +6,8 @@ import (
 	"os"
 	"strconv"
 
-	"bitbucket.org/mylittleadventure/example-golang/scraper"
-	"bitbucket.org/mylittleadventure/example-golang/server"
+	"github.com/mylittleadventure/meetup-golang-intro/scraper"
+	"github.com/mylittleadventure/meetup-golang-intro/server"
 )
 
 func main() {

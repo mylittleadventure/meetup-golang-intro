@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"bitbucket.org/mylittleadventure/example-golang/scraper"
+	"github.com/mylittleadventure/meetup-golang-intro/scraper"
 )
 
 func Serve(h []scraper.Hotel) {
