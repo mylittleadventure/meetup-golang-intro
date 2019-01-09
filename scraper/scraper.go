@@ -9,7 +9,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-const perPage = 25
+const perPage = 15
 const bookingURL = "https://www.booking.com/searchresults.en-gb.html?aid=807124&sid=53bce7046c98b8fcc190ba4c092250bc&sb=1&src=country&src_elem=sb&error_url=https%3A%2F%2Fwww.booking.com%2Fcountry%2Fus.en-gb.html%3Faid%3D807124%3Bsid%3D53bce7046c98b8fcc190ba4c092250bc%3Binac%3D0%26%3B&ss=Nice%2C+Provence-Alpes-Côte+d'Azur%2C+France&is_ski_area=&checkin_monthday=10&checkin_month=2&checkin_year=2019&checkout_monthday=11&checkout_month=2&checkout_year=2019&no_rooms=1&group_adults=2&group_children=0&from_sf=1&ss_raw=nice&ac_position=0&ac_langcode=en&ac_click_type=b&dest_id=-1454990&dest_type=city&iata=NCE&place_id_lat=43.69808&place_id_lon=7.269624&search_pageview_id=00f8759fa84200ab&search_selected=true&search_pageview_id=00f8759fa84200ab&ac_suggestion_list_length=5&ac_suggestion_theme_list_length=0"
 
 type Hotel struct {
@@ -22,7 +22,7 @@ func ScrapeBooking(client *http.Client, pages int) (h []Hotel) {
 	c := make(chan []Hotel, pages)
 
 	for i := 0; i < pages; i++ {
-		go Scrape(client, bookingURL+fmt.Sprintf("&offset=%d&rows=%d", pages*perPage, perPage), c)
+		go Scrape(client, bookingURL+fmt.Sprintf("&offset=%d", i*perPage), c)
 	}
 	for i := 0; i < pages; i++ {
 		h = append(h, <-c...)
